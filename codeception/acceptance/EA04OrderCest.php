@@ -222,6 +222,9 @@ class EA04OrderCest
         });
 
         $OrderListPage = OrderManagePage::go($I)->検索();
+
+        $I->wait(2);
+
         $I->see('検索結果：'.count($TargetOrders).'件が該当しました', OrderManagePage::$検索結果_メッセージ);
 
         // 削除
@@ -230,7 +233,9 @@ class EA04OrderCest
             ->一覧_選択(1)
             ->一覧_削除()
             ->Accept_削除();
-
+        
+        $I->wait(2);
+        
         $I->see('削除しました', ['css' => '#page_admin_order > div > div.c-contentsArea > div.alert.alert-success.alert-dismissible.fade.show.m-3 > span']);
         $I->assertNotEquals($OrderNumForDel, $OrderListPage->一覧_注文番号(1));
 

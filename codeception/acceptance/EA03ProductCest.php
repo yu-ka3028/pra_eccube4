@@ -1129,27 +1129,39 @@ class EA03ProductCest
             ->検索($Product->getName())
             ->検索結果_選択(1);
 
+        $I->wait(5);
+
         ProductEditPage::at($I)
             ->規格管理();
+
+        $I->wait(5);
 
         ProductClassEditPage::at($I)
             ->入力_在庫数無制限(1)
             ->登録();
+
+        $I->wait(5);
 
         ProductClassEditPage::at($I)
             ->無効_在庫数無制限(1)
             ->入力_個数(1, 100)
             ->登録();
 
+        $I->wait(5);
+
         ProductClassEditPage::at($I)
             ->無効_規格(1)
             ->登録();
+
+        $I->wait(5);
 
         ProductClassEditPage::at($I)
             ->有効_規格(1)
             ->入力_個数(1, 10)
             ->入力_販売価格(1, 5000)
             ->登録();
+        
+        $I->wait(5);
 
         $I->see('保存しました', ProductClassEditPage::$登録完了メッセージ);
 
@@ -1159,10 +1171,14 @@ class EA03ProductCest
         $ProductClass = $ProductClasses[0];
         $id = $ProductClass->getId();
 
+        $I->wait(5);
+
         // 該当IDの商品が1つか確認
         $count = $this->conn->fetchOne('SELECT COUNT(*) FROM dtb_product_stock WHERE product_class_id = ?', [$id]);
         $I->assertEquals('1', $count, '該当データは1件です');
 
+        $I->wait(5);
+        
         // 個数のズレがないか確認
         $stock = $this->conn->fetchOne('SELECT stock FROM dtb_product_stock WHERE product_class_id = ?', [$id]);
         $I->assertEquals('10', $stock, 'Stockが一致');
