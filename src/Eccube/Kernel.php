@@ -67,29 +67,29 @@ class Kernel extends BaseKernel
 
     public function getCacheDir(): string
     {
-        return $this->getProjectDir().'/var/cache/'.$this->environment;
+        return $this->getProjectDir() . '/var/cache/' . $this->environment;
     }
 
     public function getLogDir(): string
     {
-        return $this->getProjectDir().'/var/log';
+        return $this->getProjectDir() . '/var/log';
     }
 
     public function getConfigDir(): string
     {
-        return $this->getProjectDir().'/app/config/eccube';
+        return $this->getProjectDir() . '/app/config/eccube';
     }
 
     public function registerBundles(): iterable
     {
-        $contents = require $this->getProjectDir().'/app/config/eccube/bundles.php';
+        $contents = require $this->getProjectDir() . '/app/config/eccube/bundles.php';
         foreach ($contents as $class => $envs) {
             if (isset($envs['all']) || isset($envs[$this->environment])) {
                 yield new $class();
             }
         }
 
-        $pluginDir = $this->getProjectDir().'/app/Plugin';
+        $pluginDir = $this->getProjectDir() . '/app/Plugin';
         $finder = (new Finder())
             ->in($pluginDir)
             ->sortByName()
@@ -100,7 +100,7 @@ class Kernel extends BaseKernel
         }, iterator_to_array($finder));
 
         foreach ($plugins as $code) {
-            $pluginBundles = $pluginDir.'/'.$code.'/Resource/config/bundles.php';
+            $pluginBundles = $pluginDir . '/' . $code . '/Resource/config/bundles.php';
             if (file_exists($pluginBundles)) {
                 $contents = require $pluginBundles;
                 foreach ($contents as $class => $envs) {
@@ -111,10 +111,13 @@ class Kernel extends BaseKernel
             }
         }
 
-        $contents = require $this->getProjectDir().'/app/Customize/Resource/config/bundles.php';
-        foreach ($contents as $class => $envs) {
-            if (isset($envs['all']) || isset($envs[$this->environment])) {
-                yield new $class();
+        $customizeBundles = $this->getProjectDir() . '/app/Customize/Resource/config/bundles.php';
+        if (file_exists($customizeBundles)) {
+            $contents = require $customizeBundles;
+            foreach ($contents as $class => $envs) {
+                if (isset($envs['all']) || isset($envs[$this->environment])) {
+                    yield new $class();
+                }
             }
         }
     }
@@ -159,23 +162,23 @@ class Kernel extends BaseKernel
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
     {
-        $confDir = $this->getProjectDir().'/app/config/eccube';
-        $loader->load($confDir.'/services'.self::CONFIG_EXTS, 'glob');
-        $loader->load($confDir.'/packages/*'.self::CONFIG_EXTS, 'glob');
-        if (is_dir($confDir.'/packages/'.$this->environment)) {
-            $loader->load($confDir.'/packages/'.$this->environment.'/**/*'.self::CONFIG_EXTS, 'glob');
+        $confDir = $this->getProjectDir() . '/app/config/eccube';
+        $loader->load($confDir . '/services' . self::CONFIG_EXTS, 'glob');
+        $loader->load($confDir . '/packages/*' . self::CONFIG_EXTS, 'glob');
+        if (is_dir($confDir . '/packages/' . $this->environment)) {
+            $loader->load($confDir . '/packages/' . $this->environment . '/**/*' . self::CONFIG_EXTS, 'glob');
         }
-        $loader->load($confDir.'/services_'.$this->environment.self::CONFIG_EXTS, 'glob');
+        $loader->load($confDir . '/services_' . $this->environment . self::CONFIG_EXTS, 'glob');
 
         // プラグインのservices.phpをロードする.
-        $dir = dirname(__DIR__).'/../app/Plugin/*/Resource/config';
-        $loader->load($dir.'/services'.self::CONFIG_EXTS, 'glob');
-        $loader->load($dir.'/services_'.$this->environment.self::CONFIG_EXTS, 'glob');
+        $dir = dirname(__DIR__) . '/../app/Plugin/*/Resource/config';
+        $loader->load($dir . '/services' . self::CONFIG_EXTS, 'glob');
+        $loader->load($dir . '/services_' . $this->environment . self::CONFIG_EXTS, 'glob');
 
         // カスタマイズディレクトリのservices.phpをロードする.
-        $dir = dirname(__DIR__).'/../app/Customize/Resource/config';
-        $loader->load($dir.'/services'.self::CONFIG_EXTS, 'glob');
-        $loader->load($dir.'/services_'.$this->environment.self::CONFIG_EXTS, 'glob');
+        $dir = dirname(__DIR__) . '/../app/Customize/Resource/config';
+        $loader->load($dir . '/services' . self::CONFIG_EXTS, 'glob');
+        $loader->load($dir . '/services_' . $this->environment . self::CONFIG_EXTS, 'glob');
     }
 
     protected function configureRoutes(RoutingConfigurator $routes)
@@ -188,31 +191,31 @@ class Kernel extends BaseKernel
             $scheme = ['https'];
         }
 
-        $confDir = $this->getProjectDir().'/app/config/eccube';
-        if (is_dir($confDir.'/routes/')) {
-            $builder = $routes->import($confDir.'/routes/*'.self::CONFIG_EXTS);
+        $confDir = $this->getProjectDir() . '/app/config/eccube';
+        if (is_dir($confDir . '/routes/')) {
+            $builder = $routes->import($confDir . '/routes/*' . self::CONFIG_EXTS);
             $builder->schemes($scheme);
         }
-        if (is_dir($confDir.'/routes/'.$this->environment)) {
-            $builder = $routes->import($confDir.'/routes/'.$this->environment.'/**/*'.self::CONFIG_EXTS);
+        if (is_dir($confDir . '/routes/' . $this->environment)) {
+            $builder = $routes->import($confDir . '/routes/' . $this->environment . '/**/*' . self::CONFIG_EXTS);
             $builder->schemes($scheme);
         }
-        $builder = $routes->import($confDir.'/routes'.self::CONFIG_EXTS);
+        $builder = $routes->import($confDir . '/routes' . self::CONFIG_EXTS);
         $builder->schemes($scheme);
-        $builder = $routes->import($confDir.'/routes_'.$this->environment.self::CONFIG_EXTS);
+        $builder = $routes->import($confDir . '/routes_' . $this->environment . self::CONFIG_EXTS);
         $builder->schemes($scheme);
 
         // 有効なプラグインのルーティングをインポートする.
         $plugins = $container->getParameter('eccube.plugins.enabled');
-        $pluginDir = $this->getProjectDir().'/app/Plugin';
+        $pluginDir = $this->getProjectDir() . '/app/Plugin';
         foreach ($plugins as $plugin) {
-            $dir = $pluginDir.'/'.$plugin.'/Controller';
+            $dir = $pluginDir . '/' . $plugin . '/Controller';
             if (file_exists($dir)) {
-                $builder = $routes->import($dir,'annotation');
+                $builder = $routes->import($dir, 'annotation');
                 $builder->schemes($scheme);
             }
-            if (file_exists($pluginDir.'/'.$plugin.'/Resource/config')) {
-                $builder = $routes->import($pluginDir.'/'.$plugin.'/Resource/config/routes'.self::CONFIG_EXTS);
+            if (file_exists($pluginDir . '/' . $plugin . '/Resource/config')) {
+                $builder = $routes->import($pluginDir . '/' . $plugin . '/Resource/config/routes' . self::CONFIG_EXTS);
                 $builder->schemes($scheme);
             }
         }
@@ -285,7 +288,7 @@ class Kernel extends BaseKernel
         $namespaces = ['Eccube\\Entity'];
         $reader = new Reference('annotation_reader');
         $driver = new Definition(AnnotationDriver::class, [$reader, $paths]);
-        $driver->addMethodCall('setTraitProxiesDirectory', [$projectDir.'/app/proxy/entity']);
+        $driver->addMethodCall('setTraitProxiesDirectory', [$projectDir . '/app/proxy/entity']);
         $container->addCompilerPass(new DoctrineOrmMappingsPass($driver, $namespaces, []));
 
         // Customize
@@ -295,7 +298,7 @@ class Kernel extends BaseKernel
         ));
 
         // Plugin
-        $pluginDir = $projectDir.'/app/Plugin';
+        $pluginDir = $projectDir . '/app/Plugin';
         $finder = (new Finder())
             ->in($pluginDir)
             ->sortByName()
@@ -306,12 +309,12 @@ class Kernel extends BaseKernel
         }, iterator_to_array($finder));
 
         foreach ($plugins as $code) {
-            if (file_exists($pluginDir.'/'.$code.'/Entity')) {
-                $paths = ['%kernel.project_dir%/app/Plugin/'.$code.'/Entity'];
-                $namespaces = ['Plugin\\'.$code.'\\Entity'];
+            if (file_exists($pluginDir . '/' . $code . '/Entity')) {
+                $paths = ['%kernel.project_dir%/app/Plugin/' . $code . '/Entity'];
+                $namespaces = ['Plugin\\' . $code . '\\Entity'];
                 $reader = new Reference('annotation_reader');
                 $driver = new Definition(AnnotationDriver::class, [$reader, $paths]);
-                $driver->addMethodCall('setTraitProxiesDirectory', [$projectDir.'/app/proxy/entity']);
+                $driver->addMethodCall('setTraitProxiesDirectory', [$projectDir . '/app/proxy/entity']);
                 $container->addCompilerPass(new DoctrineOrmMappingsPass($driver, $namespaces, []));
             }
         }
@@ -326,7 +329,7 @@ class Kernel extends BaseKernel
         }
 
         $files = Finder::create()
-            ->in(__DIR__.'/../../app/proxy/entity/')
+            ->in(__DIR__ . '/../../app/proxy/entity/')
             ->name('*.php')
             ->files();
         foreach ($files as $file) {
