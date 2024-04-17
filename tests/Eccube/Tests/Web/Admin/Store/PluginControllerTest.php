@@ -114,7 +114,7 @@ class PluginControllerTest extends AbstractAdminWebTestCase
     {
         return [
             ['api42+symfony/yaml:5.3', '4.2.3', '有効な値ではありません。'],
-            ['', '4.2.3','入力されていません。'],
+            ['', '4.3.0','入力されていません。'],
         ];
     }
 
@@ -124,10 +124,10 @@ class PluginControllerTest extends AbstractAdminWebTestCase
     public function OwnerStoreUpgradeParam()
     {
         return [
-            ['api42+symfony/yaml:5.3', '4.2.3', '有効な値ではありません。'],
-            ['api42', '4.2.3 symfony/yaml:5.3', '有効な値ではありません。'],
+            ['api42+symfony/yaml:5.3', '4.3.0', '有効な値ではありません。'],
+            ['api42', '4.3.0 symfony/yaml:5.3', '有効な値ではありません。'],
             ['api42', '','入力されていません。'],
-            ['', '4.2.3','入力されていません。'],
+            ['', '4.3.0','入力されていません。'],
         ];
     }
 }
