@@ -24,6 +24,8 @@ class CustomizeBundleTest extends KernelTestCase
         $fs = new Filesystem();
         $fs->remove(__DIR__.'/../../../app/Customize/Bundle');
         $fs->remove(__DIR__.'/../../../app/Customize/Resource/config/bundles.php');
+
+        parent::tearDown();
     }
 
     public function testContainsCustomizeBundle()
