@@ -64,11 +64,11 @@ function log_debug($message, array $context = [])
 /**
  * プラグイン用ログ出力関数
  *
- * @param $channel 設定されたchannel名
+ * @param string $channel 設定されたchannel名
  *
  * @return \Symfony\Bridge\Monolog\Logger
  */
-function logs($channel)
+function logs(string $channel)
 {
     return LoggerFacade::getLoggerBy($channel);
 }

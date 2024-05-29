@@ -69,7 +69,7 @@ class LoggerFacade
      *
      * @return \Symfony\Bridge\Monolog\Logger
      */
-    public static function getLoggerBy($channel)
+    public static function getLoggerBy(string $channel)
     {
         return self::$Container->get('monolog.logger.'.$channel);
     }
