@@ -67,6 +67,11 @@ jobs:
       - name: Initialize Composer
         uses: ./.github/actions/composer
 
+      - name: Build Sass and JavaScript
+        run: |
+          npm ci
+          npm run build
+
       - name: Setup to EC-CUBE
         env:
           APP_ENV: ${{ matrix.app_env }}
