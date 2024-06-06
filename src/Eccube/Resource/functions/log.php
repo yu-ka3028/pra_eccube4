@@ -68,7 +68,7 @@ function log_debug($message, array $context = [])
  *
  * @return \Symfony\Bridge\Monolog\Logger
  */
-function logs(string $channel)
+function logs($channel)
 {
     return LoggerFacade::getLoggerBy($channel);
 }
