@@ -79,9 +79,9 @@ class PluginServiceTest extends AbstractServiceTestCase
     /*
        正しいプラグインの条件
        * tar/zipアーカイブである
-       * 展開した直下のディレクトリにcomposer.jsonがあり、正しいymlファイルである
+       * 展開した直下のディレクトリにcomposer.jsonがあり、正しいファイルである
        * composer.jsonの必須要素が規定の文字数、文字種で定義されている
-       * event.ymlが存在する場合、正しいymlである
+       * event.ymlが存在する場合、正しいである
 
      */
 
