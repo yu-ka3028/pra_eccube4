@@ -444,18 +444,18 @@ class PluginService
         }
 
         if (!is_array($meta)) {
-            throw new PluginException('config.yml not found or syntax error');
+            throw new PluginException('composer.json not found or syntax error');
         }
         if (!isset($meta['code']) || !$this->checkSymbolName($meta['code'])) {
-            throw new PluginException('config.yml code empty or invalid_character(\W)');
+            throw new PluginException('composer.json code empty or invalid_character(\W)');
         }
         if (!isset($meta['name'])) {
-            // nameは直接クラス名やPATHに使われるわけではないため文字のチェックはなしし
-            throw new PluginException('config.yml name empty');
+            // nameは直接クラス名やPATHに使われるわけではないため文字のチェックはなし
+            throw new PluginException('composer.json name empty');
         }
         if (!isset($meta['version'])) {
-            // versionは直接クラス名やPATHに使われるわけではないため文字のチェックはなしし
-            throw new PluginException('config.yml version invalid_character(\W) ');
+            // versionは直接クラス名やPATHに使われるわけではないため文字のチェックはなし
+            throw new PluginException('composer.json version invalid_character(\W) ');
         }
     }
 
