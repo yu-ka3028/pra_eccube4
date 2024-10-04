@@ -102,9 +102,6 @@ jobs:
 
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
-        with:
-          # ChromeDriverのバージョンを指定
-          chromedriver-version: '127.0.6533.119'  # 特定のバージョンを指定
 
       - name: Run chromedriver
         run: |
@@ -254,9 +251,6 @@ jobs:
 
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
-        with:
-          # ChromeDriverのバージョンを指定
-          chromedriver-version: '127.0.6533.119'  # 特定のバージョンを指定
 
       - name: Run chromedriver
         run: |
@@ -406,9 +400,6 @@ jobs:
 
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
-        with:
-          # ChromeDriverのバージョンを指定
-          chromedriver-version: '127.0.6533.119'  # 特定のバージョンを指定
 
       - name: Run chromedriver
         run: |
@@ -561,9 +552,6 @@ jobs:
 
       - name: setup-chromedriver
         uses: nanasess/setup-chromedriver@master
-        with:
-          # ChromeDriverのバージョンを指定
-          chromedriver-version: '127.0.6533.119'  # 特定のバージョンを指定
 
       - name: Run chromedriver
         run: |
