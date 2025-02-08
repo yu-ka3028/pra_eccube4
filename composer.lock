@@ -8285,8 +8285,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -10244,16 +10244,16 @@
         },
         {
             "name": "symfony/templating",
-            "version": "v6.4.8",
+            "version": "v6.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/templating.git",
-                "reference": "e0a572c7dfd8fc2cfb488909e2ab0f5daeb2a8b9"
+                "reference": "e27b6ea8d737cb0dfd41b2f5f055c9ed677afa33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/templating/zipball/e0a572c7dfd8fc2cfb488909e2ab0f5daeb2a8b9",
-                "reference": "e0a572c7dfd8fc2cfb488909e2ab0f5daeb2a8b9",
+                "url": "https://api.github.com/repos/symfony/templating/zipball/e27b6ea8d737cb0dfd41b2f5f055c9ed677afa33",
+                "reference": "e27b6ea8d737cb0dfd41b2f5f055c9ed677afa33",
                 "shasum": ""
             },
             "require": {
@@ -10290,7 +10290,7 @@
             "description": "Provides all the tools needed to build any kind of template system",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/templating/tree/v6.4.8"
+                "source": "https://github.com/symfony/templating/tree/v6.4.13"
             },
             "funding": [
                 {
@@ -10306,7 +10306,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-31T14:49:08+00:00"
+            "time": "2024-10-25T15:07:50+00:00"
         },
         {
             "name": "symfony/translation",
