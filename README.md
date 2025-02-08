@@ -1,11 +1,12 @@
 # EC-CUBE 4.3
 
-# EC-CUBE 4.3
+[![Unit test for EC-CUBE](https://github.com/EC-CUBE/ec-cube/actions/workflows/unit-test.yml/badge.svg?branch=4.3)](https://github.com/EC-CUBE/ec-cube/actions/workflows/unit-test.yml)
+[![E2E test for EC-CUBE](https://github.com/EC-CUBE/ec-cube/actions/workflows/e2e-test.yml/badge.svg?branch=4.3)](https://github.com/EC-CUBE/ec-cube/actions/workflows/e2e-test.yml)
+[![Plugin test for EC-CUBE](https://github.com/EC-CUBE/ec-cube/actions/workflows/plugin-test.yml/badge.svg?branch=4.3)](https://github.com/EC-CUBE/ec-cube/actions/workflows/plugin-test.yml)
+[![PHPStan](https://github.com/EC-CUBE/ec-cube/actions/workflows/phpstan.yml/badge.svg?branch=4.3)](https://github.com/EC-CUBE/ec-cube/actions/workflows/phpstan.yml)
+[![codecov](https://codecov.io/gh/EC-CUBE/ec-cube/branch/4.3/graph/badge.svg?token=BhnPjjvfwd)](https://codecov.io/gh/EC-CUBE/ec-cube)
 
-[![Unit test for EC-CUBE](https://github.com/EC-CUBE/ec-cube/actions/workflows/unit-test.yml/badge.svg?branch=main)](https://github.com/EC-CUBE/ec-cube/actions/workflows/unit-test.yml)
-[![E2E test for EC-CUBE](https://github.com/EC-CUBE/ec-cube/actions/workflows/e2e-test.yml/badge.svg?branch=main)](https://github.com/EC-CUBE/ec-cube/actions/workflows/e2e-test.yml)
-[![Plugin test for EC-CUBE](https://github.com/EC-CUBE/ec-cube/actions/workflows/plugin-test.yml/badge.svg?branch=main)](https://github.com/EC-CUBE/ec-cube/actions/workflows/plugin-test.yml)
-[![PHPStan](https://github.com/EC-CUBE/ec-cube/actions/workflows/phpstan.yml/badge.svg?branch=main)](https://github.com/EC-CUBE/ec-cube/actions/workflows/phpstan.yml)
+[![Slack](https://img.shields.io/badge/slack-join%5fchat-brightgreen.svg?style=flat)](https://join.slack.com/t/ec-cube/shared_invite/enQtNDA1MDYzNDQxMTIzLTY5MTRhOGQ2MmZhMjQxYTAwMmVlMDc5MDU2NjJlZmFiM2E3M2Q0M2Y3OTRlMGY4NTQzN2JiZDBkNmQwNTUzYzc)
 
 **4.2からの更新内容は[リリースノート](https://github.com/EC-CUBE/ec-cube/releases/tag/4.3.0)をご確認ください。**
 
