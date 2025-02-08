@@ -1,6 +1,9 @@
-# Readme
+# par_eccube4
 
-# 
+### CSS
+- ボタンホバーはCSSで行う
+ec-cube/html/template/default/assets/css/style.css
+
 
 
 # EC-CUBE 4.3
