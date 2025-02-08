@@ -24,8 +24,8 @@ services:
     ## docker tag ec-cube ghcr.io/ec-cube/ec-cube-php:8.1-apache
     image: ${REGISTRY:-ghcr.io}/${IMAGE_NAME:-ec-cube/ec-cube-php}:${TAG:-8.1-apache}
     ports:
-      - 8080:80
-      - 4430:443
+      - 8082:80
+      - 4440:443
     volumes:
       ### 同期対象からコストの重いフォルダを除外 #####################
       - "var:/var/www/html/var"
@@ -63,7 +63,7 @@ services:
   mailcatcher:
     image: schickling/mailcatcher
     ports:
-      - "1080:1080"
-      - "1025:1025"
+      - "1081:1080"
+      - "1026:1025"
     networks:
       - backend
