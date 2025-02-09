@@ -1,4 +1,4 @@
-# ボタンのホバー設定 [2 系]()
+# ボタンのホバー設定 [2 系](https://github.com/yu-ka3028/pra_eccube2/issues/19#issue-2838699626)
 
 ## 調査
 
