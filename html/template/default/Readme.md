@@ -1,4 +1,4 @@
-# ボタンのホバー設定 [2 系]()
+# ボタンのホバー設定 [2 系](https://github.com/users/yu-ka3028/projects/7/views/1?pane=issue&itemId=97060185&issue=yu-ka3028%7Cpra_eccube2%7C19)
 
 ## 調査
 
